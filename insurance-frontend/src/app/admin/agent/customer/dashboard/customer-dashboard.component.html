@@ -1,0 +1,43 @@
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">INSURANCE</h2>
+
+    <ul>
+      <li class="active">🏠 Dashboard</li>
+      <li>📄 My Policies</li>
+      <li>🧾 Claims</li>
+      <li>💳 Payments</li>
+      <li>📑 Documents</li>
+      <li>⚙️ Settings</li>
+      <li class="logout">🚪 Logout</li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <h2 class="welcome">Welcome back 👋</h2>
+
+    <div class="cards">
+      <div class="card blue">
+        <p>My Policies</p>
+        <h1>{{ myPolicies }}</h1>
+      </div>
+
+      <div class="card green">
+        <p>Active Policies</p>
+        <h1>{{ activePolicies }}</h1>
+      </div>
+
+      <div class="card yellow">
+        <p>Claims</p>
+        <h1>{{ claims }}</h1>
+      </div>
+
+      <div class="card red">
+        <p>Total Paid</p>
+        <h1>₹{{ paidAmount }}</h1>
+      </div>
+    </div>
+  </main>
+</div>

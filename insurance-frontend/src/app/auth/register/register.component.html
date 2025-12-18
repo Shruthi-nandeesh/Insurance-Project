@@ -1,0 +1,97 @@
+<div class="register-container">
+  <h2>Insurance Registration</h2>
+
+  <div class="form-grid">
+
+    <input type="text" placeholder="First Name" [(ngModel)]="data.firstName">
+    <input type="text" placeholder="Last Name" [(ngModel)]="data.lastName">
+
+    <input type="date" [(ngModel)]="data.dob">
+
+    <select [(ngModel)]="data.gender">
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+
+    <input type="email" placeholder="Email" [(ngModel)]="data.email">
+
+    <div>
+      <input
+        type="tel"
+        placeholder="Mobile Number"
+        maxlength="10"
+        [(ngModel)]="data.mobile"
+        (input)="validateMobile()"
+      />
+      <small class="error" *ngIf="mobileError">{{ mobileError }}</small>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="password-wrapper">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="Password"
+        [(ngModel)]="data.password"
+        (input)="checkPasswordStrength()"
+      />
+
+      <span class="eye" (click)="togglePassword()">
+        {{ showPassword ? '🙈' : '👁️' }}
+      </span>
+
+      <small class="strength"
+        [class.weak]="passwordStrength === 'Weak'"
+        [class.medium]="passwordStrength === 'Medium'"
+        [class.strong]="passwordStrength === 'Strong'">
+        {{ passwordStrength }}
+      </small>
+    </div>
+
+    <!-- CONFIRM PASSWORD -->
+    <div class="password-wrapper">
+      <input
+        [type]="showConfirm ? 'text' : 'password'"
+        placeholder="Confirm Password"
+        [(ngModel)]="data.confirmPassword"
+      />
+
+      <span class="eye" (click)="toggleConfirm()">
+        {{ showConfirm ? '🙈' : '👁️' }}
+      </span>
+
+      <small
+        class="match"
+        [class.ok]="passwordsMatch()"
+        [class.err]="!passwordsMatch() && data.confirmPassword">
+        {{ data.confirmPassword
+          ? (passwordsMatch() ? 'Passwords match ✅' : 'Passwords do not match ❌')
+          : '' }}
+      </small>
+    </div>
+
+  </div>
+
+  <!-- SEND OTP -->
+  <button (click)="sendOtp()" [disabled]="otpTimer > 0">
+    {{ otpTimer > 0 ? 'Resend OTP in ' + otpTimer + 's' : 'Send OTP' }}
+  </button>
+
+  <!-- OTP INPUT -->
+  <div *ngIf="otpSent">
+    <input placeholder="Enter OTP" [(ngModel)]="data.otp">
+
+    <small *ngIf="otpTimer > 0">
+      OTP expires in {{ otpTimer }} seconds
+    </small>
+
+    <small *ngIf="otpTimer === 0" class="error">
+      OTP expired. Please resend.
+    </small>
+  </div>
+
+  <button (click)="register()" [disabled]="!otpSent || !passwordsMatch()">
+    Register
+  </button>
+</div>

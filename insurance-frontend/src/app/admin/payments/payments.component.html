@@ -1,0 +1,69 @@
+<div class="payment-container">
+  <h2>Payment for Policy {{ policyNo }}</h2>
+
+  <!-- PAYMENT TABS -->
+  <div class="tabs">
+    <button (click)="selectMethod('card')" [class.active]="paymentMethod === 'card'">Card</button>
+    <button (click)="selectMethod('upi')" [class.active]="paymentMethod === 'upi'">UPI</button>
+    <button (click)="selectMethod('qr')" [class.active]="paymentMethod === 'qr'">QR</button>
+  </div>
+
+  <!-- AMOUNT -->
+  <div class="amount-box">
+    Amount to Pay: <strong>₹{{ amount }}</strong>
+  </div>
+
+  <!-- CARD -->
+  <div *ngIf="paymentMethod === 'card'" class="method-box">
+    <input type="text" placeholder="Card Number" [(ngModel)]="card.number" maxlength="16">
+    <input type="text" placeholder="Card Holder Name" [(ngModel)]="card.name">
+    <input type="month" [(ngModel)]="card.expiry" [min]="minExpiry">
+    <input type="password" placeholder="CVV" [(ngModel)]="card.cvv" maxlength="3">
+  </div>
+
+  <!-- UPI -->
+  <div *ngIf="paymentMethod === 'upi'" class="method-box">
+    <input type="text" placeholder="UPI ID" [(ngModel)]="upiId">
+  </div>
+
+  <!-- QR -->
+  <div *ngIf="paymentMethod === 'qr'" class="method-box">
+    <p>Scan QR Code using any UPI app</p>
+    <img src="assets/qr.jpeg" class="qr">
+  </div>
+
+  <!-- AADHAAR -->
+  <label class="label">Aadhaar Card (Required)</label>
+  <input type="file" (change)="onFileChange($event)">
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p class="success" *ngIf="success">{{ success }}</p>
+
+  <button class="pay-btn" (click)="pay()">Pay Now</button>
+
+  <!-- RECEIPT -->
+  <div class="receipt" *ngIf="showReceipt" id="receipt-pdf">
+    <h3>Insurance Payment Receipt</h3>
+
+    <p><strong>Policy No:</strong> {{ policyNo }}</p>
+    <p><strong>Amount Paid:</strong> ₹{{ amount }}</p>
+    <p><strong>Payment Date:</strong> {{ paymentDate | date:'medium' }}</p>
+    <p><strong>Payment Method:</strong> {{ paymentMethod | uppercase }}</p>
+    <p><strong>Status:</strong> SUCCESS</p>
+
+    <p class="thanks">
+      Thank you for choosing our Insurance Services.
+    </p>
+
+    <!-- ❌ NOT IN PDF -->
+    <div class="no-pdf">
+      <button class="download-btn" (click)="downloadReceipt()">
+        Download Receipt (PDF)
+      </button>
+
+      <button class="continue-btn" (click)="continue()">
+        Continue
+      </button>
+    </div>
+  </div>
+</div>

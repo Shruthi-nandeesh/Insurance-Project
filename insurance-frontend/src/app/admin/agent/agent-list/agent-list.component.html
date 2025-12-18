@@ -1,0 +1,39 @@
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">INSURANCE</h2>
+
+    <ul class="menu">
+      <li routerLink="/agent/dashboard" routerLinkActive="active">
+        🏠 Dashboard
+      </li>
+
+      <li routerLink="/agent/customers" routerLinkActive="active">
+        👥 Customers
+      </li>
+
+      <li routerLink="/agent/policies" routerLinkActive="active">
+        📄 Policies
+      </li>
+
+      <li routerLink="/agent/claims" routerLinkActive="active">
+        📑 Claims  
+      </li>
+
+      <li routerLink="/agent/earnings" routerLinkActive="active">
+          💰 Earnings
+      </li>
+
+
+
+      <li class="logout" (click)="logout()">
+        🚪 Logout
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

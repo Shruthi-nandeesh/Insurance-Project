@@ -1,0 +1,74 @@
+<div class="agents-container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h2>Agents</h2>
+    <button class="btn primary" (click)="toggleForm()">+ Add Agent</button>
+  </div>
+
+  <!-- AGENTS TABLE -->
+  <table *ngIf="agents.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th style="width: 180px;">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let agent of agents">
+        <td>{{ agent.fullName }}</td>
+        <td>{{ agent.email }}</td>
+        <td>{{ agent.phone }}</td>
+        <td class="actions">
+          <button class="btn edit" (click)="editAgent(agent)">Edit</button>
+          <button class="btn delete" (click)="deleteAgent(agent.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- NO DATA -->
+  <ng-template #noData>
+    <p class="empty">No agents found</p>
+  </ng-template>
+
+  <!-- ADD / EDIT FORM -->
+  <div class="modal" *ngIf="showAddForm">
+    <div class="modal-content">
+      <h3>{{ isEditMode ? 'Edit Agent' : 'Add Agent' }}</h3>
+
+      <form (ngSubmit)="isEditMode ? updateAgent() : addAgent()">
+
+        <label>Full Name</label>
+        <input type="text" [(ngModel)]="newAgent.fullName" name="fullName" required />
+
+        <label>Email</label>
+        <input type="email" [(ngModel)]="newAgent.email" name="email" required />
+
+        <label>Password</label>
+        <input
+          type="password"
+          [(ngModel)]="newAgent.password"
+          name="password"
+          [required]="!isEditMode"
+          placeholder="{{ isEditMode ? 'Leave empty to keep same' : '' }}"
+        />
+
+        <label>Phone</label>
+        <input type="text" [(ngModel)]="newAgent.phone" name="phone" required />
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">
+            {{ isEditMode ? 'Update' : 'Add' }}
+          </button>
+          <button type="button" class="btn cancel" (click)="toggleForm()">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

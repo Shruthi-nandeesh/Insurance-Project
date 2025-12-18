@@ -1,0 +1,25 @@
+<div class="login-container">
+  <h2>Insurance Login</h2>
+  <p class="subtitle">Welcome back! Please sign in</p>
+
+  <div class="form-item">
+    <input type="email" placeholder="Email" [(ngModel)]="data.email" />
+  </div>
+
+  <div class="form-item password-wrapper">
+    <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" [(ngModel)]="data.password" />
+    <span class="eye" (click)="togglePassword()">
+      {{ showPassword ? '🙈' : '👁️' }}
+    </span>
+  </div>
+
+  <small class="error" *ngIf="errorMsg">{{ errorMsg }}</small>
+
+  <button (click)="login()">Login</button>
+
+<p>
+  Don’t have an account?
+  <a (click)="goToRegister()">Register</a>
+</p>
+
+</div>

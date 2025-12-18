@@ -1,0 +1,26 @@
+<p>customers works!</p>
+<h2 class="title">Customers & Purchased Policies</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Email</th>
+      <th>Policy</th>
+      <th>Purchase Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of purchases">
+      <td>{{ p.customerName }}</td>
+      <td>{{ p.customerEmail }}</td>
+      <td>{{ p.policyName }}</td>
+      <td>{{ p.purchaseDate }}</td>
+      <td>
+        <span class="badge active">{{ p.status }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

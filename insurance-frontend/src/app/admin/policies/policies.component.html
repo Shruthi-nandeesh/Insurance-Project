@@ -1,0 +1,39 @@
+<h2>Available Insurance Policies</h2>
+
+<div *ngIf="loading">Loading policies...</div>
+
+<p *ngIf="!loading && policies.length === 0">
+  No policies available
+</p>
+
+<div class="policy-grid" *ngIf="!loading && policies.length > 0">
+  <div class="policy-card" *ngFor="let policy of policies">
+
+    <!-- IMAGE -->
+    <img
+      class="policy-img"
+      [src]="getImage(policy.insuranceType?.name)"
+      alt="Insurance type"
+    />
+
+    <!-- TYPE NAME -->
+    <h3>{{ policy.insuranceType?.name }}</h3>
+
+    <!-- DESCRIPTION -->
+    <p class="desc">
+      {{ getDescription(policy.insuranceType?.name) }}
+    </p>
+
+    <!-- DETAILS -->
+    <p>Policy No: {{ policy.policyNumber }}</p>
+    <p>Coverage: ₹{{ policy.coverageAmount }}</p>
+
+    <p class="amount">
+      Premium: ₹{{ policy.premiumAmount }} / year
+    </p>
+
+    <button (click)="buyPolicy(policy.id)">
+      Buy Policy
+    </button>
+  </div>
+</div>

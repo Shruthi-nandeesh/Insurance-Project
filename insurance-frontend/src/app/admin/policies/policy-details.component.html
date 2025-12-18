@@ -1,0 +1,26 @@
+<div class="container" *ngIf="loading">
+  <p>Loading policy details...</p>
+</div>
+
+<div class="container" *ngIf="!loading && policy">
+
+  <div class="card">
+    <img [src]="policy.image" alt="Policy Image" class="policy-image" />
+
+    <h2>{{ policy.type }}</h2>
+
+    <p><strong>Policy No:</strong> {{ policy.policyNumber }}</p>
+    <p><strong>Coverage:</strong> ₹{{ policy.coverage }}</p>
+    <p><strong>Premium:</strong> ₹{{ policy.premium }} / year</p>
+
+    <p class="description">
+      {{ policy.description }}
+    </p>
+
+    <button type="button" class="btn" (click)="proceedToPayment()">
+  Proceed to Payment
+</button>
+
+  </div>
+
+</div>

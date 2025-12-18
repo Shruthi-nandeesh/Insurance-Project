@@ -1,0 +1,112 @@
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  background: linear-gradient(180deg, #0b1d3a, #09152b);
+  color: white;
+  padding: 20px;
+}
+
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Sidebar menu */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar li.active {
+  background: #0d6efd;
+}
+
+.sidebar .logout {
+  margin-top: 40px;
+  background: rgba(255, 0, 0, 0.15);
+}
+
+/* ===== CONTENT ===== */
+.content {
+  flex: 1;
+  padding: 25px 30px;
+
+  /* 🔥 THIS IS THE KEY FIX */
+  margin-left: 230px;
+}
+
+/* Header */
+.welcome {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  height: 140px;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.card p {
+  font-size: 16px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.card h1 {
+  font-size: 38px;
+  margin: 0;
+}
+
+/* ===== COLORS ===== */
+.blue {
+  background: #0d6efd;
+}
+
+.green {
+  background: #198754;
+}
+
+.yellow {
+  background: #ffc107;
+  color: black;
+}
+
+.red {
+  background: #dc3545;
+}

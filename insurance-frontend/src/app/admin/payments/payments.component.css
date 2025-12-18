@@ -1,0 +1,112 @@
+.payment-container {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.tabs button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #007bff;
+  color: white;
+}
+
+.amount-box {
+  background: #f1f8ff;
+  padding: 12px;
+  text-align: center;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.method-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.qr {
+  width: 180px;
+  display: block;
+  margin: auto;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
+.receipt {
+  margin-top: 25px;
+  padding: 20px;
+  border: 2px dashed #28a745;
+  background: #f6fff8;
+}
+
+.download-btn,
+.continue-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.download-btn {
+  background: #007bff;
+  color: white;
+}
+
+.continue-btn {
+  background: #28a745;
+  color: white;
+}
+
+.thanks {
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* 🔥 Hide buttons in PDF */
+.hide-for-pdf .no-pdf {
+  display: none !important;
+}
